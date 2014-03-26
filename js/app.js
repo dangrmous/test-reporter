@@ -3,8 +3,10 @@ App = Ember.Application.create();
 App.Router.map(function () {
 
     this.resource('about');
-    this.resource('tests');
-    this.resource('test', {path: ':test_id'});
+    this.resource('tests', function (){
+        this.resource('test', {path: ':test_id'});
+    });
+
 
 
     // put your routes here

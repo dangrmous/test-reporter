@@ -68,10 +68,8 @@
 
 
    <h1>Test {{id}}</h1>
-   {{#each}}
-               <tr><td>
-                   Event: {{event}}
-               </td></tr>
+{{#each tests}}
+    <p>{{event}} {{suite}} {{tests}} {{test}} {{status}} {{time}}</p>
     {{/each}}
 
 
