@@ -10,7 +10,7 @@ App.Suite.FIXTURES = [
     {
         "id": 1,
         "date": 032520141103,
-        "suite": [
+        "tests": [
             {"test": "CreateCampaignTest::testCreateCampaign",
                 "status": "fail",
                 "time": 19.10386300087,
