@@ -6,3 +6,11 @@
 .active {
     font-weight: bold;
 }
+
+.fail {
+    background-color: lightpink;
+}
+
+.pass{
+    background-color: lightgreen;
+}

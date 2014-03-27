@@ -25,6 +25,8 @@
 
 
 
+
+
 </script>
 
 <script type="text/x-handlebars" id="about">
@@ -34,6 +36,8 @@
       <p>Geoff is the creator of various pointless and annoying web properties like <a href="http://isgeoffdrinking.com">isgeoffdrinking.com</a> and
       <a href="http://dangrmous.nurk.org/audio/">Noiser</a>.</p>
     </div>
+
+
 
 
 
@@ -57,25 +61,32 @@
             {{/each}}
           </table>
         </div>
-        <div class="span9">
+        <span class='span9'>
           {{outlet}}
-        </div>
+        </span>
       </div>
     </div>
+
+
 
 
 
 </script>
 
 <script type="text/x-handlebars" id="suite">
-
-   {{#each tests}}
-                   <p>{{test}}</p>
-                   <p>{{status}}</p>
-                   <p>{{message}}</p>
-   {{/each}}
-
-
+    <table class='table'>
+    <thead><tr><th>Test date: {{date}}</th></tr></thead>
+        {{#each tests}}
+        <tr {{bind-attr class="status"}}>
+        <td>
+            Test: {{test}}<br>
+            Status: {{status}}<br>
+            Message: {{message}}<br>
+            {{outlet}}
+        </td>
+        </tr>
+        {{/each}}
+    </table>
 </script>
 
 
