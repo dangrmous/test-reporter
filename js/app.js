@@ -241,7 +241,7 @@ App.Router.map(function () {
     this.resource('about');
     this.resource('suites', function () {
         this.resource('suite', {path: ':suite_id'} , function(){
-            this.resource('test', {path: ':test'});
+            this.resource('test', {path: ':test_id'});
         });
     });
 
@@ -265,7 +265,7 @@ App.SuiteRoute = Ember.Route.extend({
 App.TestRoute = Ember.Route.extend({
 
     model: function(){
-        return this.store.find('test');
+        return this.store.find('tests', params.test_id);
     }
 })
 
