@@ -200,7 +200,7 @@ App.Suite.FIXTURES = [
             },
             {
                 "test": "FBUnpublishedLinkPostTest::testFBUnpublishedLinkPost",
-                    "status": "pass",
+                    "status": "error",
                     "time": 49.095010042191,
                     "trace": [
 

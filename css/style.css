@@ -14,3 +14,7 @@
 .pass{
     background-color: lightgreen;
 }
+
+.error{
+    background-color: lightgray;
+}
