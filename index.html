@@ -79,16 +79,43 @@
         {{#each tests}}
         <tr {{bind-attr class="status"}}>
         <td>
-            Test: {{test}}<br>
-            Status: {{status}}<br>
-            Message: {{message}}<br>
-            {{outlet}}
+        {{#link-to 'test' this}}
+            Test: {{test}}
+        {{/link-to}}
+        <td>
         </td>
-        </tr>
         {{/each}}
     </table>
+    <div>
+        {{outlet}}
+    </div>
+
 </script>
 
+<script type="text/x-handlebars" id="test">
+<table class='table'>
+<thead><tr><th>Details:</th></tr></thead>
+<tr><td>{{test}}</td></tr>
+<tr><td>{{status}}</td></tr>
+<tr><td>{{time}}</td></tr>
+<tr><td>{{#each trace}}</td></tr>
+<tr><td>{{file}}</td></tr>
+<tr><td>{{line}}</td></tr>
+<tr><td>{{function}}</td></tr>
+<tr><td>{{class}}</td></tr>
+<tr><td>{{type}}</td></tr>
+<table class='table subtable'>
+{{#each args}}
+<tr><td>{{this}}</tr></td>
+{{/each}}
+</table>
+{{message}}<br>
+{{output}}<br>
+{{/each}}
+
+
+
+</script>
 
 <script src="js/libs/jquery-1.10.2.js"></script>
 <script src="js/libs/handlebars-1.1.2.js"></script>

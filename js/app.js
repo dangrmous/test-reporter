@@ -1,4 +1,6 @@
-App = Ember.Application.create({});
+App = Ember.Application.create({
+    LOG_TRANSITIONS: true
+});
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 App.Suite = DS.Model.extend({
@@ -9,9 +11,10 @@ App.Suite = DS.Model.extend({
 App.Suite.FIXTURES = [
     {
         "id": 1,
-        "date": 032520141103,
+        "date": 32520141103,
         "tests": [
-            {"test": "CreateCampaignTest::testCreateCampaign",
+            {"id":1,
+                "test": "CreateCampaignTest::testCreateCampaign",
                 "status": "fail",
                 "time": 19.10386300087,
                 "trace": [
@@ -42,6 +45,7 @@ App.Suite.FIXTURES = [
                 "message": "Failed command: assertTextPresent('sdfasj')\nFailed asserting that false is true.",
                 "output": ""},
             {
+                "id":2,
                 "test": "FBLinkPostTest::testFBLinkPost",
                 "status": "fail",
                 "time": 76.359910011292,
@@ -74,6 +78,7 @@ App.Suite.FIXTURES = [
                 "output": ""
             },
             {
+                "id":3,
                 "test": "FBUnpublishedLinkPostTest::testFBUnpublishedLinkPost",
                 "status": "pass",
                 "time": 51.292876958847,
@@ -84,6 +89,7 @@ App.Suite.FIXTURES = [
                 "output": ""
             },
             {
+                "id":4,
                 "test": "FBFutureLinkPostTest::testFBFutureLinkPost",
                 "status": "pass",
                 "time": 44.546409130096,
@@ -94,6 +100,7 @@ App.Suite.FIXTURES = [
                 "output": ""
             },
             {
+                "id":4,
                 "test": "CreateFBAdTest::testCreateFBAd",
                 "status": "pass",
                 "time": 27.856699943542,
@@ -106,9 +113,10 @@ App.Suite.FIXTURES = [
         ]},
     {
         "id": 2,
-        "date": 032520141116,
+        "date": 32520141116,
         "tests": [
             {
+                "id":1,
                 "test": "CreateCampaignTest::testCreateCampaign",
                 "status": "fail",
                 "time": 21.426814079285,
@@ -141,6 +149,7 @@ App.Suite.FIXTURES = [
                 "output": ""
             },
             {
+                "id":2,
                 "test": "FBLinkPostTest::testFBLinkPost",
                 "status": "fail",
                 "time": 69.252578020096,
@@ -176,9 +185,10 @@ App.Suite.FIXTURES = [
     },
     {
         "id": 3,
-        "date": 032520141523,
+        "date": 32520141523,
         "tests": [
             {
+                "id":1,
                 "test": "CreateCampaignTest::testCreateCampaign",
                     "status": "pass",
                     "time": 28.407824993134,
@@ -189,6 +199,7 @@ App.Suite.FIXTURES = [
                     "output": ""
                 },
             {
+                "id":2,
                     "test": "FBLinkPostTest::testFBLinkPost",
                     "status": "pass",
                     "time": 48.374269962311,
@@ -199,6 +210,7 @@ App.Suite.FIXTURES = [
                     "output": ""
             },
             {
+                "id":3,
                 "test": "FBUnpublishedLinkPostTest::testFBUnpublishedLinkPost",
                     "status": "error",
                     "time": 49.095010042191,
@@ -209,6 +221,7 @@ App.Suite.FIXTURES = [
                     "output": ""
             },
             {
+                "id":4,
                 "test": "FBFutureLinkPostTest::testFBFutureLinkPost",
                     "status": "pass",
                     "time": 47.126768112183,
@@ -227,8 +240,11 @@ App.Router.map(function () {
 
     this.resource('about');
     this.resource('suites', function () {
-        this.resource('suite', {path: ':suite_id'});
+        this.resource('suite', {path: ':suite_id'} , function(){
+            this.resource('test', {path: ':test'});
+        });
     });
+
     // put your routes here
 });
 
@@ -245,6 +261,13 @@ App.SuiteRoute = Ember.Route.extend({
         return this.store.find('suite', params.suite_id);
     }
 });
+
+App.TestRoute = Ember.Route.extend({
+
+    model: function(){
+        return this.store.find('test');
+    }
+})
 
 
 
