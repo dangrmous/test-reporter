@@ -14,7 +14,7 @@
       <div class="navbar-inner">
         <a class="brand" href="#">Test reporter</a>
         <ul class="nav">
-            <li>{{#link-to 'tests'}}Tests{{/link-to}}</li>
+            <li>{{#link-to 'suites'}}Suites{{/link-to}}</li>
             <li>{{#link-to 'about'}}About{{/link-to}}</li>
         </ul>
       </div>
@@ -38,7 +38,7 @@
 
 </script>
 
-<script type="text/x-handlebars" id="tests">
+<script type="text/x-handlebars" id="suites">
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
@@ -48,8 +48,8 @@
             </thead>
             {{#each}}
             <tr><td>
-            {{#link-to 'test' this}}
-                Test number: {{id}}
+            {{#link-to 'suite' this}}
+                Suite date {{date}}
             {{/link-to}}
             </td></tr>
             {{/each}}
@@ -64,16 +64,9 @@
 
 </script>
 
-<script type="text/x-handlebars" id="test">
+<script type="text/x-handlebars" id="suite">
 
-   <h1>Test {{id}}</h1>
-   <p>Name: {{test}}</p>
-   <p>Status: {{status}}</p>
-   <p>Time: {{time}}</p>
-   <p>Trace: {{trace}}</p>
-    <p>Message: {{message}}</p>
-    <p>Output: {{output}}
-    {{outlet}}
+   {{date}}
 
 </script>
 
