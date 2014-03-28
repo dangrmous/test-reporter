@@ -79,11 +79,14 @@
         {{#each tests}}
         <tr {{bind-attr class="status"}}>
         <td>
-        {{#link-to 'test' this}}
+
+            {{#link-to 'test' this}}
             Test: {{test}}
-        {{/link-to}}
-        <td>
+            {{/link-to}}
+
         </td>
+        </tr>
+
         {{/each}}
     </table>
     <div>
