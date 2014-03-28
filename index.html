@@ -22,11 +22,6 @@
 
     {{outlet}}
 
-
-
-
-
-
 </script>
 
 <script type="text/x-handlebars" id="about">
@@ -67,22 +62,20 @@
       </div>
     </div>
 
-
-
-
-
 </script>
 
 <script type="text/x-handlebars" id="suite">
     <table class='table'>
-    <thead><tr><th>Test date: {{date}}</th></tr></thead>
+    <thead><tr><th>Tests date: {{date}}
+    Test is: {{id}}</th></tr></thead>
         {{#each tests}}
         <tr {{bind-attr class="status"}}>
         <td>
 
-            {{#link-to 'test' this}}
-            Test: {{test}}
-            {{/link-to}}
+
+           {{test}}
+
+
 
         </td>
         </tr>
