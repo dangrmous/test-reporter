@@ -72,8 +72,9 @@
         <tr {{bind-attr class="status"}}>
         <td>
 
-
+        {{#link-to 'suite.test' this}}
            {{test}}
+        {{/link-to}}
 
 
 
@@ -88,26 +89,29 @@
 
 </script>
 
-<script type="text/x-handlebars" id="test">
+<script type="text/x-handlebars" id="suite/test">
 <table class='table'>
-<thead><tr><th>Details:</th></tr></thead>
-<tr><td>{{test}}</td></tr>
-<tr><td>{{status}}</td></tr>
-<tr><td>{{time}}</td></tr>
-<tr><td>{{#each trace}}</td></tr>
-<tr><td>{{file}}</td></tr>
-<tr><td>{{line}}</td></tr>
-<tr><td>{{function}}</td></tr>
-<tr><td>{{class}}</td></tr>
-<tr><td>{{type}}</td></tr>
-<table class='table subtable'>
-{{#each args}}
-<tr><td>{{this}}</tr></td>
-{{/each}}
+  <thead><tr><th>Details:</th></tr></thead>
+  <tr><td>{{test}}</td></tr>
+  <tr><td>{{status}}</td></tr>
+  <tr><td>{{time}}</td></tr>
+  {{#each trace}}
+  <tr><td>{{file}}</td></tr>
+  <tr><td>{{line}}</td></tr>
+  <tr><td>{{function}}</td></tr>
+  <tr><td>{{class}}</td></tr>
+  <tr><td>{{type}}</td></tr>
+  <tr><td>
+    <table class='table subtable'>
+      {{#each args}}
+        <tr><td>{{this}}</td></tr>
+      {{/each}}
+    </table>
+  </td></tr>
+  {{/each}}
 </table>
 {{message}}<br>
 {{output}}<br>
-{{/each}}
 
 
 

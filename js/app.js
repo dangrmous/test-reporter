@@ -100,7 +100,7 @@ App.Suite.FIXTURES = [
                 "output": ""
             },
             {
-                "id":4,
+                "id":5,
                 "test": "CreateFBAdTest::testCreateFBAd",
                 "status": "pass",
                 "time": 27.856699943542,
@@ -190,46 +190,38 @@ App.Suite.FIXTURES = [
             {
                 "id":1,
                 "test": "CreateCampaignTest::testCreateCampaign",
-                    "status": "pass",
-                    "time": 28.407824993134,
-                    "trace": [
-
-                    ],
-                    "message": "",
-                    "output": ""
-                },
+                "status": "pass",
+                "time": 28.407824993134,
+                "trace": [],
+                "message": "",
+                "output": ""
+            },
             {
                 "id":2,
-                    "test": "FBLinkPostTest::testFBLinkPost",
-                    "status": "pass",
-                    "time": 48.374269962311,
-                    "trace": [
-
-                    ],
-                    "message": "",
-                    "output": ""
+                "test": "FBLinkPostTest::testFBLinkPost",
+                "status": "pass",
+                "time": 48.374269962311,
+                "trace": [],
+                "message": "",
+                "output": ""
             },
             {
                 "id":3,
                 "test": "FBUnpublishedLinkPostTest::testFBUnpublishedLinkPost",
-                    "status": "error",
-                    "time": 49.095010042191,
-                    "trace": [
-
-                    ],
-                    "message": "",
-                    "output": ""
+                "status": "error",
+                "time": 49.095010042191,
+                "trace": [],
+                "message": "",
+                "output": ""
             },
             {
                 "id":4,
                 "test": "FBFutureLinkPostTest::testFBFutureLinkPost",
-                    "status": "pass",
-                    "time": 47.126768112183,
-                    "trace": [
-
-                    ],
-                    "message": "",
-                    "output": ""
+                "status": "pass",
+                "time": 47.126768112183,
+                "trace": [],
+                "message": "",
+                "output": ""
             }
         ]
     }
@@ -241,7 +233,7 @@ App.Router.map(function () {
     this.resource('about');
     this.resource('suites', function () {
         this.resource('suite', {path: ':suite_id'} , function(){
-            this.resource('test', {path: ':test_id'});
+            this.route('test', {path: '/:test_id'});
         });
     });
 
@@ -252,20 +244,22 @@ App.SuitesRoute = Ember.Route.extend({
     model: function () {
         return this.store.findAll('suite');
     }
-
 });
 
 App.SuiteRoute = Ember.Route.extend({
     model: function (params) {
-
         return this.store.find('suite', params.suite_id);
     }
 });
 
-App.TestRoute = Ember.Route.extend({
-
-    model: function(){
-        return this.store.find('tests', params.test_id);
+App.SuiteTestRoute = Ember.Route.extend({
+    model: function(params){
+        return this
+            .modelFor('suite')
+            .get('tests')
+            .find(function(test){
+                return test.id == params.test_id; // must be `==`, exact equality will fail
+            });
     }
 })
 
