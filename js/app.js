@@ -1,7 +1,12 @@
 App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
-App.ApplicationAdapter = DS.FixtureAdapter.extend();
+//App.ApplicationAdapter = DS.FixtureAdapter.extend();
+App.ApplicationAdapter = DS.RESTAdapter.extend(
+    {
+        host: 'http://localhost/test-reporter/service.php'
+    }
+);
 
 App.Suite = DS.Model.extend({
     date: DS.attr(),
