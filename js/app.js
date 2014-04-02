@@ -268,5 +268,9 @@ App.SuiteTestRoute = Ember.Route.extend({
     }
 })
 
+Ember.Handlebars.helper('format-date', function(date) {
+  return moment.unix(date).format("ddd, MMM Do h:mm:ss a");
+});
+
 
 

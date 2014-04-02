@@ -22,6 +22,7 @@
 
     {{outlet}}
 
+
 </script>
 
 <script type="text/x-handlebars" id="about">
@@ -31,6 +32,7 @@
       <p>Geoff is the creator of various pointless and annoying web properties like <a href="http://isgeoffdrinking.com">isgeoffdrinking.com</a> and
       <a href="http://dangrmous.nurk.org/audio/">Noiser</a>.</p>
     </div>
+
 
 
 
@@ -50,7 +52,7 @@
             {{#each}}
             <tr><td>
             {{#link-to 'suite' this}}
-                Test date: {{date}}
+                Test date: {{format-date date}}
             {{/link-to}}
             </td></tr>
             {{/each}}
@@ -62,11 +64,12 @@
       </div>
     </div>
 
+
 </script>
 
 <script type="text/x-handlebars" id="suite">
     <table class='table'>
-    <thead><tr><th>Tests date: {{date}}</th></tr></thead>
+    <thead><tr><th>{{format-date date}}</th></tr></thead>
 
         {{#each tests}}
         <tr {{bind-attr class="status"}}>
@@ -87,6 +90,7 @@
         {{outlet}}
     </div>
 
+
 </script>
 
 <script type="text/x-handlebars" id="suite/test">
@@ -98,12 +102,11 @@
 
   <tr><td>File: {{trace.0.file}}</td></tr>
   <tr><td>Line: {{trace.0.line}}</td></tr>
+  <tr><td>Message: {{message}}</tr></td>
+   <tr><td>Output: {{output}}</tr></td>
 
 
 </table>
-{{message}}<br>
-{{output}}<br>
-
 
 
 </script>
