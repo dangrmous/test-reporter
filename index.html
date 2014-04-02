@@ -66,7 +66,7 @@
 
 <script type="text/x-handlebars" id="suite">
     <table class='table'>
-    <thead><tr><th>Tests date: {{date}}
+    <thead><tr><th>Tests date: {{date}}</th></tr></thead>
 
         {{#each tests}}
         <tr {{bind-attr class="status"}}>
@@ -95,11 +95,11 @@
   <tr><td>Test: {{test}}</td></tr>
   <tr><td>Status: {{status}}</td></tr>
   <tr><td>Time: {{time}}</td></tr>
-  {{#each trace}}
-  <tr><td>File: {{file}}</td></tr>
-  <tr><td>Line: {{line}}</td></tr>
 
-  {{/each}}
+  <tr><td>File: {{trace.0.file}}</td></tr>
+  <tr><td>Line: {{trace.0.line}}</td></tr>
+
+
 </table>
 {{message}}<br>
 {{output}}<br>
