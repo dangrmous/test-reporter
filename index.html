@@ -25,6 +25,10 @@
 
 </script>
 
+<script type="text/x-handlebars" id="index">
+    <p class='lead'>Welcome to Test Reporter</p>
+</script>
+
 <script type="text/x-handlebars" id="about">
 <div class='about'>
       <p>Geoff Unger is an employee of <a href="http://www.shopigniter.com">Shopigniter, Inc.</a>.
@@ -32,12 +36,6 @@
       <p>Geoff is the creator of various pointless and annoying web properties like <a href="http://isgeoffdrinking.com">isgeoffdrinking.com</a> and
       <a href="http://dangrmous.nurk.org/audio/">Noiser</a>.</p>
     </div>
-
-
-
-
-
-
 
 </script>
 
@@ -64,7 +62,15 @@
       </div>
     </div>
 
+</script>
 
+<script type="text/x-handlebars" id="suites/index">
+    <h3><small>Please choose a test</small></h3>
+
+</script>
+
+<script type="text/x-handlebars" id="suite/index">
+    <h3><small>Click a test for details</small></h3>
 </script>
 
 <script type="text/x-handlebars" id="suite">
@@ -78,9 +84,6 @@
         {{#link-to 'suite.test' this}}
            {{test}}
         {{/link-to}}
-
-
-
         </td>
         </tr>
 
@@ -99,12 +102,12 @@
   <tr><td>Test: {{test}}</td></tr>
   <tr><td>Status: {{status}}</td></tr>
   <tr><td>Time: {{time}}</td></tr>
-
+  {{#if passed}}
   <tr><td>File: {{trace.0.file}}</td></tr>
   <tr><td>Line: {{trace.0.line}}</td></tr>
   <tr><td>Message: {{message}}</tr></td>
-   <tr><td>Output: {{output}}</tr></td>
-
+  <tr><td>Output: {{output}}</tr></td>
+  {{/if}}
 
 </table>
 

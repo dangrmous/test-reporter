@@ -257,6 +257,8 @@ App.SuiteRoute = Ember.Route.extend({
     }
 });
 
+
+
 App.SuiteTestRoute = Ember.Route.extend({
     model: function(params){
         return this
@@ -266,11 +268,23 @@ App.SuiteTestRoute = Ember.Route.extend({
                 return test.id == params.test_id; // must be `==`, exact equality will fail
             });
     }
+
+})
+
+App.SuiteTestController = Ember.ObjectController.extend({
+
+    passed : function(){
+        thisStatus = this.get('status');
+        if( thisStatus == 'pass') return false;
+        else return true;
+    }.property('status')
+
 })
 
 Ember.Handlebars.helper('format-date', function(date) {
   return moment.unix(date).format("ddd, MMM Do h:mm:ss a");
 });
+
 
 
 
