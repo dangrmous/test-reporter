@@ -8,7 +8,7 @@
 
 $result = true;
 
-$suite = array();
+
 $suites = array();
 
 if (file_exists("../test-automation/SmokeTests/reports/test_log.txt")) {
@@ -24,6 +24,7 @@ $count = 0;
 
 do {
     $file = readdir($dir);
+    $suite = array();
     if (($file) && ($file != ".") && ($file != "..")) {
         $data = file_get_contents("../test-automation/SmokeTests/reports/" . $file);
         $json = '[' . str_replace('}{', '},{', $data) . ']';

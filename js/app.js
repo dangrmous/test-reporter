@@ -4,7 +4,7 @@ App = Ember.Application.create({
 //App.ApplicationAdapter = DS.FixtureAdapter.extend();
 App.ApplicationAdapter = DS.RESTAdapter.extend(
     {
-        host: 'http://localhost/test-reporter/service.php'
+        host: 'http://10.44.1.102/test-reporter/service.php'
     }
 );
 
@@ -13,7 +13,7 @@ App.Suite = DS.Model.extend({
     tests: DS.attr()
 });
 
-App.Suite.FIXTURES = [
+/*App.Suite.FIXTURES = [
     {
         "id": 1,
         "date": 32520141103,
@@ -230,7 +230,7 @@ App.Suite.FIXTURES = [
             }
         ]
     }
-]
+]*/
 
 
 App.Router.map(function () {
