@@ -86,12 +86,19 @@
         {{/link-to}}
         </td>
         </tr>
+        <tr>
+        <td>
+
+        <div>
+                {{render 'suite.test' this}}
+        </div>
+
+        </td>
+        </tr>
 
         {{/each}}
     </table>
-    <div>
-        {{outlet}}
-    </div>
+
 
 
 </script>
